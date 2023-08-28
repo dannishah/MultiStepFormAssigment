@@ -1,0 +1,144 @@
+*{
+    font-family: Raleway;
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+.c{
+    background-color: #3b3b3b;
+}
+
+ul li a{
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+}
+.navbar a{
+    color: white;
+}
+.navbar a:hover{
+    color: rgb(217, 224, 230);
+}
+.navbar-brand{
+    color: white;
+}
+
+.pg1{
+    height: 93vh;
+    width: 100vw;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../img/istockphoto-1224500457-1024x1024.jpg);
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+   
+}
+header img{
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+}
+.content{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgb(0,0,0,0.3);
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    width: 700px;
+    max-width: 100%;
+}
+
+
+/* ########################################  INDEX 2 ################################################################################# */
+.section1{
+    border: 2px solid black;
+}
+h2{
+    text-align: center;
+}
+.section2{
+  border: 2px solid black;
+}
+ h1 {
+    text-align: center;  
+}
+.na:hover{
+   
+}
+  
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    border: 1px solid #aaaaaa;
+  }
+  
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  .tab {
+    display: none;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 17px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .step.active {
+    opacity: 1;
+  }
+  
+  .step.finish {
+    background-color: #04AA6D;
+  }
+
+
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .index3 p{
+     font-size: 23px;
+  }
+  .btt{
+    font-size: 30px;
+  }
+
+@media (max-width: 480px){
+    .content{
+        line-height: 20px;
+    }
+}
+
+@media (max-width: 481px) , (max-width: 675px){
+    .content{
+        line-height: 25px;
+    }
+    
+}
+
+

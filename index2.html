@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+   
+
+    <title>dd</title>
+</head>
+<body>
+    <section class="section1 container py-3 ">
+         <h1>Registration Form</h1>
+
+        <div class="row">
+            <form action="/action_page.php">
+                <label for="Email">Email:</label>
+                <input type="email" class="form-control" id="Email" placeholder="Enter email" required>
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" required><br>
+                <button type="submit" class="btn btn-primary" >Submit</button>
+            </form>
+        </div>
+    
+    </section>
+
+
+          <h2 class="mt-4">Task : 2</h2>
+
+    <section class="section2 container">
+        <form id="regForm" action="./index3.html">
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+                    
+            <h1>Register:</h1>
+            <div class="tab"><h2>Personal Information:</h2>
+              <p><input id="aa" placeholder="Enter your name..." class="form-control" oninput="this.className = ''" name="fname"></p>
+              <p><input type="number" placeholder="Enter your age in years..." class="form-control" oninput="this.className = ''" name="age"></p>
+              <p><input type="number" placeholder="Enter your DOB..." class="form-control" oninput="this.className = ''" name="dob"></p>
+            </div>
+            <div class="tab"><h2>Address:</h2>
+              <p><input id="bb" placeholder="City name" class="form-control" oninput="this.className = ''" name="email"></p>
+              <p><input placeholder="District name" class="form-control" oninput="this.className = ''" name="phone"></p>
+              <p><input placeholder="Enter street no, house no,and Town" class="form-control" oninput="this.className = ''" name="phone"></p>
+            </div>
+            <div class="tab"><h2>Review:</h2>
+              <p><input id="cc" placeholder="Enter your review" class="form-control" oninput="this.className = ''" name="dd"></p>
+            </div>
+            <div style="overflow:auto;">
+              <div style="float:right;">
+                <button type="button" class="btn btn-primary" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPrev(1)">Next</button>
+              </div>
+            </div>
+            <div style="text-align:center;margin-top:40px;">
+              <span class="step"></span>
+              <span class="step"></span>
+              <span class="step"></span>
+            </div>
+          </form>
+
+          <script>  
+            var currentTab = 0; 
+            showTab(currentTab); 
+            function showTab(n) {
+              var x = document.getElementsByClassName("tab");
+              x[n].style.display = "block";
+              var progress = (n / 3) * 100; 
+                document.querySelector('.progress-bar').style.width = progress + '%';
+  
+
+              if (n == 0) {
+                document.getElementById("prevBtn").style.display = "none";
+              } else {
+                document.getElementById("prevBtn").style.display = "inline";
+              }
+              if (n == (x.length - 1)) {
+                document.getElementById("nextBtn").innerHTML = "Submit";
+              } else {
+                document.getElementById("nextBtn").innerHTML = "Next";
+              }
+              fixStepIndicator(n)
+            }
+            
+            function nextPrev(n) {
+             var x = document.getElementsByClassName("tab");
+             if (n == 1 && !validateForm()) return false;
+             storeFormData(currentTab); 
+             x[currentTab].style.display = "none";
+             currentTab = currentTab + n;
+             if (currentTab >= x.length) { 
+               document.getElementById("regForm").submit();
+                return false;
+              }
+            showTab(currentTab);
+            }
+            
+            function validateForm() {
+             var x, y, i, valid = true;
+              x = document.getElementsByClassName("tab");
+              y = x[currentTab].getElementsByTagName("input");
+              for (i = 0; i < y.length; i++) {
+                if (y[i].value == "") {
+                  y[i].className += " invalid";
+                 valid = false;
+                }
+              }
+             if (valid) {
+                document.getElementsByClassName("step")[currentTab].className += " finish";
+              }
+              return valid;
+            }
+            
+            function fixStepIndicator(n) {
+              var i, x = document.getElementsByClassName("step");
+              for (i = 0; i < x.length; i++) {
+                x[i].className = x[i].className.replace(" active", "");
+              }
+              
+              x[n].className += " active";
+            }
+
+
+
+            var formData = {}; // Object to store form data
+  
+            function storeFormData(step) {
+             var inputs = document.getElementsByClassName('tab')[step].getElementsByTagName('input');
+              for (var i = 0; i < inputs.length; i++) {
+              var key = 'step' + step + '_' + inputs[i].name;
+              var value = inputs[i].value;
+            localStorage.setItem(key, value);
+              }
+            }
+            
+            function populateFields(step) {
+              var inputs = document.getElementsByClassName('tab')[step].getElementsByTagName('input');
+              for (var i = 0; i < inputs.length; i++) {
+              var key = 'step' + step + '_' + inputs[i].name;
+              var value = localStorage.getItem(key);
+              if (value !== null) {
+              inputs[i].value = value;
+            }
+          }
+        }
+                        
+        function submitForm() {
+    if (validateForm()) {
+        window.location.href = 'confirmation.html';
+    }
+}
+            </script>
+            
+          
+    </section>
+
+</body>
+</html>
